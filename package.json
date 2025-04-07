@@ -1,0 +1,60 @@
+{
+  "name": "stepjs",
+  "version": "0.1.0",
+  "description": "A flexible and extensible workflow engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint 'src/**/*.ts'",
+    "format": "prettier --write 'src/**/*.ts'",
+    "prepare": "yarn run build",
+    "prepublishOnly": "yarn test && yarn run lint",
+    "version": "yarn run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "workflow",
+    "process",
+    "pipeline",
+    "steps",
+    "typescript",
+    "async",
+    "orchestration"
+  ],
+  "author": "Ali Turki",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anbturki/stepjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anbturki/stepjs/issues"
+  },
+  "homepage": "https://github.com/anbturki/stepjs#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "eslint": "^9.23.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.3.1",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=18.15.11"
+  }
+}
