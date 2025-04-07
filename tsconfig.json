@@ -17,7 +17,10 @@
         "resolveJsonModule": true,
         "sourceMap": true,
         "removeComments": false,
-        "types": ["jest", "node"]
+        "types": [
+            "jest",
+            "node"
+        ]
     },
     "include": [
         "src/**/*.ts",
@@ -28,7 +31,6 @@
         "node_modules",
         "dist",
         "test",
-        "examples",
-        "**/*.test.ts"
+        "examples"
     ]
 }

@@ -53,7 +53,7 @@ describe('BasicStep', () => {
 
       const step = new BasicStep<WorkflowContext<CustomInput, CustomResult>>(
         'typed-step',
-        async (context) => {
+        async context => {
           if (context.input) {
             context.result = { doubled: context.input.value * 2 };
           }
@@ -62,7 +62,7 @@ describe('BasicStep', () => {
 
       const context = new WorkflowContext<CustomInput, CustomResult>({
         workflowName: 'test',
-        input: { value: 21 }
+        input: { value: 21 },
       });
 
       await step.execute(context);
@@ -84,7 +84,7 @@ describe('BasicStep', () => {
     it('should handle undefined context values', async () => {
       const step = new BasicStep<WorkflowContext<{ optional?: string }>>(
         'optional-step',
-        async (context) => {
+        async context => {
           // Should not throw when accessing undefined values
           const value = context.input?.optional;
           expect(value).toBeUndefined();
@@ -109,8 +109,8 @@ describe('BasicStep', () => {
       const testInstance = new TestClass();
       const step = testInstance.getStep();
       const context = new WorkflowContext({ workflowName: 'test' });
-      
+
       await expect(step.execute(context)).resolves.not.toThrow();
     });
   });
-}); 
+});

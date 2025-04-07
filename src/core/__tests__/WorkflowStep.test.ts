@@ -6,7 +6,7 @@ describe('WorkflowStep', () => {
     it('should require name property', () => {
       class TestStep implements WorkflowStep<WorkflowContext> {
         public readonly name = 'test-step';
-        
+
         async execute(context: WorkflowContext): Promise<void> {
           // Implementation for testing
         }
@@ -19,7 +19,7 @@ describe('WorkflowStep', () => {
     it('should require execute method', () => {
       class TestStep implements WorkflowStep<WorkflowContext> {
         public readonly name = 'test-step';
-        
+
         async execute(context: WorkflowContext): Promise<void> {
           // Implementation for testing
         }
@@ -40,7 +40,7 @@ describe('WorkflowStep', () => {
 
       class TypedStep implements WorkflowStep<WorkflowContext<CustomInput, CustomResult>> {
         public readonly name = 'typed-step';
-        
+
         async execute(context: WorkflowContext<CustomInput, CustomResult>): Promise<void> {
           if (context.input) {
             context.result = { doubled: context.input.value * 2 };
@@ -53,4 +53,4 @@ describe('WorkflowStep', () => {
       expect(step.execute).toBeDefined();
     });
   });
-}); 
+});

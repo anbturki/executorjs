@@ -1,4 +1,4 @@
-# StepJS
+# executorjs
 
 A lightweight, flexible workflow engine for Node.js applications focused on simplicity and extensibility.
 
@@ -12,7 +12,7 @@ A lightweight, flexible workflow engine for Node.js applications focused on simp
 ## Installation
 
 ```bash
-npm install stepjs
+npm install executorjs
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ import {
   BasicStep,
   ConsoleObserver,
   WorkflowContext
-} from 'stepjs';
+} from 'executorjs';
 
 // Define input and result types
 interface MyInput {
@@ -86,7 +86,7 @@ import {
   ConditionalStep,
   ConsoleObserver, 
   PerformanceObserver
-} from 'stepjs';
+} from 'executorjs';
 
 // Define input and result types
 interface OrderInput {
@@ -296,7 +296,7 @@ console.log('Slowest step:', Object.keys(metrics.stepsByDuration)[0]);
 
 ## Error Handling
 
-StepJS provides robust error handling:
+executorjs provides robust error handling:
 
 ```typescript
 // Continue execution even if steps fail
@@ -317,12 +317,12 @@ if (context.successful) {
 }
 ```
 
-## Extending StepJS
+## Extending executorjs
 
-StepJS is designed for extension. Create custom steps by implementing the `WorkflowStep` interface:
+executorjs is designed for extension. Create custom steps by implementing the `WorkflowStep` interface:
 
 ```typescript
-import { WorkflowStep, WorkflowContext } from 'stepjs';
+import { WorkflowStep, WorkflowContext } from 'executorjs';
 
 class DatabaseStep implements WorkflowStep {
   readonly name: string;
@@ -342,7 +342,7 @@ class DatabaseStep implements WorkflowStep {
 Create custom observers by implementing the `WorkflowObserver` interface:
 
 ```typescript
-import { WorkflowObserver, WorkflowContext } from 'stepjs';
+import { WorkflowObserver, WorkflowContext } from 'executorjs';
 
 class MetricsObserver implements WorkflowObserver {
   onWorkflowComplete(context: WorkflowContext): void {

@@ -1,5 +1,5 @@
 {
-  "name": "stepjs",
+  "name": "executorjs",
   "version": "0.1.0",
   "description": "A flexible and extensible workflow engine",
   "main": "dist/index.js",
@@ -12,10 +12,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint --config eslint.config.js 'src/**/*.ts'",
     "format": "prettier --write 'src/**/*.ts'",
     "prepare": "yarn run build",
-    "prepublishOnly": "yarn test && yarn run lint",
     "version": "yarn run format && git add -A src",
     "postversion": "git push && git push --tags",
     "clean": "rimraf dist"
@@ -33,13 +32,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anbturki/stepjs.git"
+    "url": "git+https://github.com/anbturki/executorjs.git"
   },
   "bugs": {
-    "url": "https://github.com/anbturki/stepjs/issues"
+    "url": "https://github.com/anbturki/executorjs/issues"
   },
-  "homepage": "https://github.com/anbturki/stepjs#readme",
+  "homepage": "https://github.com/anbturki/executorjs#readme",
   "devDependencies": {
+    "@eslint/js": "^9.24.0",
     "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
@@ -48,7 +48,8 @@
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.3.1",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.29.0"
   },
   "dependencies": {
     "uuid": "^11.1.0"

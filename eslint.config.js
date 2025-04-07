@@ -1,34 +1,30 @@
-module.exports = {
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        project: './tsconfig.json',
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+    {
+        ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'test/**', 'examples/**'],
+        files: ['src/**/*.ts'],
+        rules: {
+            // Your custom rules
+            'no-console': 'warn',
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            '@typescript-eslint/explicit-module-boundary-types': 'off',
+            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-unused-vars': ['error', {
+                'argsIgnorePattern': '^_',
+                'varsIgnorePattern': '^_'
+            }],
+            '@typescript-eslint/no-empty-function': 'warn',
+        },
+        languageOptions: {
+            parserOptions: {
+                project: './tsconfig.json',
+                ecmaVersion: 2022,
+                sourceType: 'module',
+            },
+        },
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    ],
-    plugins: ['@typescript-eslint'],
-    env: {
-        node: true,
-        jest: true,
-    },
-    rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-unused-vars': ['error', {
-            'argsIgnorePattern': '^_',
-            'varsIgnorePattern': '^_'
-        }],
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        'no-console': 'off',
-        'max-len': ['error', {
-            'code': 100,
-            'ignoreComments': true,
-            'ignoreStrings': true,
-            'ignoreTemplateLiterals': true
-        }]
-    },
-};
+);
